@@ -1,22 +1,21 @@
 package com.hiwotab.springboot1920.controller;
 
+import com.hiwotab.springboot1920.model.Courses;
 import com.hiwotab.springboot1920.model.Role;
+import com.hiwotab.springboot1920.model.Student;
 import com.hiwotab.springboot1920.model.User;
+import com.hiwotab.springboot1920.repositories.CourseRepo;
 import com.hiwotab.springboot1920.repositories.RoleRepo;
+import com.hiwotab.springboot1920.repositories.StudentRepo;
 import com.hiwotab.springboot1920.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +29,10 @@ public class HomeController {
     UserRepo userRepo;
     @Autowired
     RoleRepo roleRepo;
+    @Autowired
+    CourseRepo courseRepo;
+    @Autowired
+    StudentRepo studentRepo;
     @RequestMapping("/")
     public String showHomePage() {
         return "index";
@@ -83,35 +86,24 @@ public class HomeController {
         }
         return "redirect:/login";
     }
-//    @GetMapping("addpeopletocourse/{id}")
-//    public String addPeopletoCourse(@PathVariable("id") long courseId, Model model)
+//    @GetMapping("addStudentToCourse/{id}")
+//    public String addStudentToCourses(@PathVariable("id") long courseId, Model model)
 //    {
-////        Courses courlist=new Courses();
-////        courlist.setCourse("Java Boot Camp");
-////        courseRepository.save(courlist);
-////        courlist=new Courses();
-////        courlist.setCourse("Cyber Advantage");
-////        courseRepository.save(courlist);
-////        courlist=new Courses();
-////        courlist.setCourse("Phyton");
-////        courseRepository.save(courlist);
-//        model.addAttribute("crs", courseRepository.findOne(new Long(courseId)));
-//        model.addAttribute("perlist",resumeRepository.findAll());
-//        return "courseaddpeople";
+//        model.addAttribute("crs", CourseRepo.findOne(new Long(courseId)));
+//        model.addAttribute("perlist",studentRepo.findAll());
+//        return "addStudentToCourse";
 //    }
 //
-//    @PostMapping("addpeopletocourse/{crsid}")
+//    @PostMapping("addStudentToCourse/{crsid}")
 //    public String postPeopletoCourse(@PathVariable("crsid") long courseID,
 //                                     @RequestParam("people") String personId,
-//                                     @ModelAttribute("aPerson") RoboResume p,
+//                                     @ModelAttribute("aPerson") Student p,
 //                                     Model model)
 //    {
 //
-//        System.out.println("person ID"+personId);
-//        System.out.println("Course ID"+courseID);
-//        Courses cr=courseRepository.findOne(new Long(courseID));
-////        RoboResume pr=resumeRepository.findOne(new Long(personId));
-//        cr.addRoboResume(resumeRepository.findOne(new Long(personId)));
+//
+//        Courses cr=courseRepo.findOne(new Long(courseID));
+//        cr.addStudent(studentRepo.findOne(new Long(personId)));
 //        courseRepository.save(cr);
 //        model.addAttribute("personlist",resumeRepository.findAll());
 //        model.addAttribute("courselist",courseRepository.findAll());
