@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body> <section class="section-table">
+    <h2>List of Person</h2>
+    <hr class="colorgraph">
+    <div class="panel panel-default">
+
+        <div>
+
+            <table>
+                <athead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Action</th>
+
+                    </tr>
+                </athead>
+                <tbody>
+                <th:block th:each="item:${course}">
+                    <tr>
+                        <td><p th:text="${item.course}" /></td>
+                        <td>
+                            <a th:href="@{/addpeopletocourse/{crsid}(crsid=${item.id})}"
+                               class="active"><small>Add Person to course</small></a>
+
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+
+        </div>
+</body>
+</html>

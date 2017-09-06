@@ -83,5 +83,57 @@ public class HomeController {
         }
         return "redirect:/login";
     }
+//    @GetMapping("addpeopletocourse/{id}")
+//    public String addPeopletoCourse(@PathVariable("id") long courseId, Model model)
+//    {
+////        Courses courlist=new Courses();
+////        courlist.setCourse("Java Boot Camp");
+////        courseRepository.save(courlist);
+////        courlist=new Courses();
+////        courlist.setCourse("Cyber Advantage");
+////        courseRepository.save(courlist);
+////        courlist=new Courses();
+////        courlist.setCourse("Phyton");
+////        courseRepository.save(courlist);
+//        model.addAttribute("crs", courseRepository.findOne(new Long(courseId)));
+//        model.addAttribute("perlist",resumeRepository.findAll());
+//        return "courseaddpeople";
+//    }
+//
+//    @PostMapping("addpeopletocourse/{crsid}")
+//    public String postPeopletoCourse(@PathVariable("crsid") long courseID,
+//                                     @RequestParam("people") String personId,
+//                                     @ModelAttribute("aPerson") RoboResume p,
+//                                     Model model)
+//    {
+//
+//        System.out.println("person ID"+personId);
+//        System.out.println("Course ID"+courseID);
+//        Courses cr=courseRepository.findOne(new Long(courseID));
+////        RoboResume pr=resumeRepository.findOne(new Long(personId));
+//        cr.addRoboResume(resumeRepository.findOne(new Long(personId)));
+//        courseRepository.save(cr);
+//        model.addAttribute("personlist",resumeRepository.findAll());
+//        model.addAttribute("courselist",courseRepository.findAll());
+//        Iterable<RoboResume>people=resumeRepository.findAll();
+//        for(RoboResume item:people) {
+//            System.out.println(item.getFirstname());
+//        }
+//        return "redirect:/courselist";
+//    }
+//
+//    @GetMapping("/courselist")
+//    public String listCourse(Model model)
+//    {
+//        model.addAttribute("course", courseRepository.findAll());
+//        return"courselist";
+//    }
+//
+//    @GetMapping("/courses for student/{id}")
+//    public String CousesForStudent(@PathVariable("id") long id, Model model)
+//    {
+//        model.addAttribute("coursreg", courseRepository.findCoursesById(id));
+//        return"studentscourse";
+//    }
 
-    }
+}

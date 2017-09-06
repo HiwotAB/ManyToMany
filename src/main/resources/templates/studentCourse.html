@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="section-form">
+    <h1>Courses Registered to</h1>
+
+    <div class="container">
+        <hr />
+        <div>
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div th:each="item:${coursreg}">
+                        <p th:text="${item.course}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

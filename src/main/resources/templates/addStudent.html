@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/addpeopletocourse/{crsid}(crsid=${crs.id})}" th:object="${aPerson}" method="post">
+    <input type="text" th:value="${crs.id}">
+    <label th:inline="text">Adding a person for [[${crs.course}]]</label>
+
+    <!--<select name="movies">-->
+    <!--<option th:each="aMovie:${movieList}" th:value="${aMovie.id}" th:text="${aMovie.title}"></option>-->
+    <!--</select>-->
+
+    <select name="people">
+        <option th:each="aPerson:${perlist}" th:value="${aPerson.id}" th:text="${aPerson.firstname}"></option>
+    </select>
+
+    <input type="submit" value="Add a person!">
+</form>
+
+</body>
+</html>
