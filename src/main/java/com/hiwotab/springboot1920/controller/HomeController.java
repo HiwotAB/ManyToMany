@@ -86,46 +86,43 @@ public class HomeController {
         }
         return "redirect:/login";
     }
-//    @GetMapping("addStudentToCourse/{id}")
-//    public String addStudentToCourses(@PathVariable("id") long courseId, Model model)
-//    {
-//        model.addAttribute("crs", CourseRepo.findOne(new Long(courseId)));
-//        model.addAttribute("perlist",studentRepo.findAll());
-//        return "addStudentToCourse";
-//    }
-//
-//    @PostMapping("addStudentToCourse/{crsid}")
-//    public String postPeopletoCourse(@PathVariable("crsid") long courseID,
-//                                     @RequestParam("people") String personId,
-//                                     @ModelAttribute("aPerson") Student p,
-//                                     Model model)
-//    {
-//
-//
-//        Courses cr=courseRepo.findOne(new Long(courseID));
-//        cr.addStudent(studentRepo.findOne(new Long(personId)));
-//        courseRepository.save(cr);
-//        model.addAttribute("personlist",resumeRepository.findAll());
-//        model.addAttribute("courselist",courseRepository.findAll());
-//        Iterable<RoboResume>people=resumeRepository.findAll();
-//        for(RoboResume item:people) {
-//            System.out.println(item.getFirstname());
-//        }
-//        return "redirect:/courselist";
-//    }
-//
-//    @GetMapping("/courselist")
-//    public String listCourse(Model model)
-//    {
-//        model.addAttribute("course", courseRepository.findAll());
-//        return"courselist";
-//    }
-//
-//    @GetMapping("/courses for student/{id}")
-//    public String CousesForStudent(@PathVariable("id") long id, Model model)
-//    {
-//        model.addAttribute("coursreg", courseRepository.findCoursesById(id));
-//        return"studentscourse";
-//    }
+    @GetMapping("addStudentToCourse/{id}")
+    public String addStudentToCourses(@PathVariable("id") long courseId, Model model)
+    {
+        model.addAttribute("crs", CourseRepo.findOne(new Long(courseId)));
+        model.addAttribute("perlist",studentRepo.findAll());
+        return "addStudentToCourse";
+    }
+
+    @PostMapping("addStudentToCourse/{crsid}")
+    public String postPeopletoCourse(@PathVariable("crsid") long courseID,
+                                     @RequestParam("people") String personId,
+                                     @ModelAttribute("aPerson") Student p,
+                                     Model model)
+    {
+
+
+        Courses cr=courseRepo.findOne(new Long(courseID));
+        cr.addStudent(studentRepo.findOne(new Long(personId)));
+        courseRepo.save(cr);
+        model.addAttribute("personlist",studentRepo.findAll());
+        model.addAttribute("courselist",courseRepo.findAll());
+
+        return "redirect:/courselist";
+    }
+
+    @GetMapping("/courselist")
+    public String listCourse(Model model)
+    {
+        model.addAttribute("course", courseRepo.findAll());
+        return"courselist";
+    }
+
+    @GetMapping("/courses for student/{id}")
+    public String CousesForStudent(@PathVariable("id") long id, Model model)
+    {
+        model.addAttribute("coursreg", courseRepo.findCoursesById(id));
+        return"studentscourse";
+    }
 
 }
